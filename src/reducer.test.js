@@ -17,6 +17,29 @@ describe('gameReducer', () => {
         expect(state).toBe(currentSate);
     });
 
+    describe('restartGame', () => {
+        it('should restart the game', () => {
+            let state = {
+                guesses: [0,2,3],
+                feedback: 'ok',
+                correctAnswer: 5
+            };
+            const correctAnswer = 7;
+            state = gameReducer(state, restartGame(correctAnswer));
+            expect(state.guesses).toEqual([]);
+            expect(state.feedback).toEqual('Make your guess!');
+            expect(state.correctAnswer).toEqual(correctAnswer);
+            expect(state.auralStatus).toEqual('');
+        });
+    });
+
+    describe('makeGuess', () => {
+        it('should make a guess', () => {
+            // let state = gameReducer(undefined, makeGuess(5));
+            // expect(state.guess).toEqual(5);
+        });
+    });
+
     // describe('generateAuralUpdate', () => {
     //     it('should generate aural updates', () => {
     //         let state;
